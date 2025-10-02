@@ -3,10 +3,15 @@ from musician.models import Musician
 
 
 class MusicianSerializer(serializers.ModelSerializer):
+    is_adult = serializers.ReadOnlyField()
+
     class Meta:
         model = Musician
-        fields = "__all__"
-
-
-class MusicianListSerializer(MusicianSerializer):
-    is_adult = serializers.BooleanField(read_only=True)
+        fields = [
+            "first_name",
+            "last_name",
+            "instrument",
+            "age",
+            "date_of_applying",
+            "is_adult",
+        ]

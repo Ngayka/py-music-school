@@ -1,13 +1,9 @@
 from rest_framework import viewsets
 
 from musician.models import Musician
-from musician.serializers import MusicianSerializer, MusicianListSerializer
+from musician.serializers import MusicianSerializer
 
 
 class MusicianViewSet(viewsets.ModelViewSet):
     queryset = Musician.objects.all()
-
-    def get_serializer_class(self):
-        if self.action == "list":
-            return MusicianListSerializer
-        return MusicianSerializer
+    serializer_class = MusicianSerializer

@@ -5,8 +5,22 @@ from musician.views import MusicianViewSet
 
 app_name = "musician"
 
-router = routers.DefaultRouter()
-router.register("musician", MusicianViewSet, basename="musician")
-
-
-urlpatterns = [path("manage-list/", include(router.urls))]
+urlpatterns = [
+    path(
+        "manage-list/",
+        MusicianViewSet.as_view({"get": "list", "post": "create"}),
+        name="manage-list",
+    ),
+    path(
+        "manage-list/<int:pk>/",
+        MusicianViewSet.as_view(
+            {
+                "get": "retrieve",
+                "put": "update",
+                "delete": "destroy",
+                "patch": "partial_update",
+            }
+        ),
+        name="manage-detail",
+    ),
+]
