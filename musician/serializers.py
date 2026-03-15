@@ -9,8 +9,7 @@ class MusicianSerializer(serializers.ModelSerializer):
         model = Musician
         fields = "__all__"
         extra_kwargs = {
-            "first_name" : {"required": False},
-            "last_name" : {"required": False},
-            "instrument" : {"required": False},
+            "first_name": {"required": False},
+            "last_name": {"required": False},
+            "instrument": {"required": False},
         }
-
